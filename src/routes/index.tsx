@@ -12,12 +12,6 @@ import { RecentCalls } from "@/components/RecentCalls";
 import { UserAvatarMenu } from "@/components/UserAvatarMenu";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Dashboard — Hintro" },
-      { name: "description", content: "Hintro dashboard for call insights and recent sessions." },
-    ],
-  }),
   component: Dashboard,
 });
 

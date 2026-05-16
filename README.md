@@ -2,7 +2,9 @@
 
 A mock dashboard for Hintro built against the provided mock API and Figma design. Switch between two mock users to compare the empty state and the populated state side-by-side, submit feedback that persists in `localStorage`, and explore stats and recent calls pulled live from the backend.
 
-**Live demo:** http://localhost:8080 (after running `npm run dev`)
+**Live demo:** _deployed on Vercel — URL added after first deploy_
+
+Or run locally with `npm run dev` → http://localhost:8080
 
 ---
 
@@ -10,14 +12,15 @@ A mock dashboard for Hintro built against the provided mock API and Figma design
 
 | Layer | Choice |
 |---|---|
-| Framework | [TanStack Start](https://tanstack.com/start) + React 19 + TypeScript |
+| Framework | React 19 + TypeScript (SPA) |
 | Routing | TanStack Router (file-based, `src/routes/`) |
 | Data fetching | TanStack Query (`useQuery` per endpoint, keyed by user id) |
 | Styling | Tailwind CSS v4 with `@theme` + OKLCH CSS variables |
 | UI primitives | Radix UI via shadcn/ui (`src/components/ui/`) |
 | Icons | lucide-react |
 | Toasts | sonner |
-| Build | Vite 7 (with Cloudflare adapter wired up for optional deploy) |
+| Build | Vite 7 |
+| Deploy | Vercel (zero-config — uses [`vercel.json`](vercel.json) for SPA rewrites) |
 
 ---
 
@@ -45,6 +48,29 @@ npm run format
 ```
 
 The mock backend lives at `https://mock-backend-hintro.vercel.app` and is hard-coded in [`src/lib/api.ts`](src/lib/api.ts). No `.env` is required.
+
+---
+
+## Deployment (Vercel)
+
+This project ships as a static single-page app — `npm run build` outputs `dist/index.html` plus hashed JS/CSS bundles that any static host can serve. Vercel is the configured target.
+
+**One-time setup (web UI, no CLI needed):**
+
+1. Go to https://vercel.com/new and sign in with GitHub
+2. Import this repo (`AyushCodes160/Hintro-Frontend-Assignment`)
+3. Leave the defaults — Vercel auto-detects Vite, output `dist/`
+4. Click **Deploy**
+
+Every push to `main` triggers a redeploy. [`vercel.json`](vercel.json) rewrites every path to `/index.html` so client-side routing works on hard refreshes.
+
+**CLI alternative:**
+
+```bash
+npm i -g vercel
+vercel               # follow prompts, link to project
+vercel --prod        # deploy to production
+```
 
 ---
 
@@ -140,7 +166,7 @@ Both are written and read by code in `src/lib/`.
 | Script | What it does |
 |---|---|
 | `npm run dev` | Start Vite dev server on `:8080` |
-| `npm run build` | Production build (client + SSR bundles) |
+| `npm run build` | Production build (outputs to `dist/`) |
 | `npm run build:dev` | Build in development mode (source maps, no minify) |
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Run ESLint |
