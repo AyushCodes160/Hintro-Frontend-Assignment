@@ -1,13 +1,14 @@
 import type { LucideIcon } from "lucide-react";
 import type { CSSProperties } from "react";
 
-type Tone = "pink" | "blue" | "green" | "orange";
+type Tone = "pink" | "blue" | "green" | "orange" | "purple";
 
 const toneStyles: Record<Tone, CSSProperties> = {
   pink: { backgroundColor: "var(--stat-pink-bg)", color: "var(--stat-pink)" },
   blue: { backgroundColor: "var(--stat-blue-bg)", color: "var(--stat-blue)" },
   green: { backgroundColor: "var(--stat-green-bg)", color: "var(--stat-green)" },
   orange: { backgroundColor: "var(--stat-orange-bg)", color: "var(--stat-orange)" },
+  purple: { backgroundColor: "var(--stat-purple-bg)", color: "var(--stat-purple)" },
 };
 
 interface Props {

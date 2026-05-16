@@ -72,7 +72,7 @@ function Dashboard() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => toast.info("Tutorial video coming soon")}
-              className="hidden items-center gap-1.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent sm:flex"
+              className="hidden items-center gap-1.5 rounded-md bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-opacity hover:opacity-90 sm:flex"
             >
               <Play className="h-3.5 w-3.5 fill-current" />
               Watch Tutorial
@@ -89,7 +89,7 @@ function Dashboard() {
                 Hi, {firstName ?? "there"} <span aria-hidden>👋</span> Welcome to Hintro
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Ready to make your next call smarter?
+                Ready to make your next call smarter ?
               </p>
             </div>
             <button
@@ -101,7 +101,7 @@ function Dashboard() {
           </div>
 
           {/* Stats */}
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
             <StatCard
               label="Total Sessions"
               value={stats ? String(stats.totalSessions) : "—"}
@@ -130,7 +130,7 @@ function Dashboard() {
               label="Last Session"
               value={lastSessionIso ? formatRelative(lastSessionIso) : "-"}
               icon={CalendarIcon}
-              tone="orange"
+              tone="purple"
             />
           </div>
 
